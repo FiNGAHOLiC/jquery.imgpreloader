@@ -22,8 +22,8 @@ var defer = $.imgpreloader({
 
 ### Deferred
 
-* **Resolved** Deferred is resolved when all images have been loaded or set **ignoreBroken** options true.
-* **Rejected** Deferred is rejected when at least one image is broken, and set **ignoreBroken** options false.
+* **Resolved** Deferred is resolved when all images have been loaded or set **ignoreBroken** options **true**.
+* **Rejected** Deferred is rejected when at least one image is broken, and set **ignoreBroken** options **false**.
 * **Notified** Deferred is notified every time an image has finished loading.
 
 ```javascript
@@ -56,7 +56,7 @@ defer.progress(function($img, per){
 
 ## Requirements
 
-jQuery 1.7.x or higher.
+jQuery 1.7.x or later.
 
 ## Browsers
 
