@@ -2,6 +2,10 @@
 
 jquery.imgpreloader.js is a simple image preloader plugin. $.imgpreloader returns jQuery deferred object.
 
+## Demo
+
+* [http://fingaholic.github.com/jquery.imgpreloader/](http://fingaholic.github.com/jquery.imgpreloader/, 'jquery.imgpreloader.js')
+
 ## Options
 
 * **ignoreBroken** 'Boolean' Ignore if image is not loaded.
