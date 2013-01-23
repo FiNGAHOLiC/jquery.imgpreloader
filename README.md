@@ -4,7 +4,7 @@ jquery.imgpreloader.js is a simple image preloader plugin. $.imgpreloader return
 
 ## Demo
 
-* [http://fingaholic.github.com/jquery.imgpreloader/](http://fingaholic.github.com/jquery.imgpreloader/, 'jquery.imgpreloader.js')
+http://fingaholic.github.com/jquery.imgpreloader/
 
 ## Options
 
