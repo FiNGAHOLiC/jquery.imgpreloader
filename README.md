@@ -8,17 +8,17 @@ http://fingaholic.github.com/jquery.imgpreloader/
 
 ## Options
 
-* **ignoreBroken** 'Boolean' Ignore if image is not loaded.
-* **paths** 'Array' Image paths.
+* **ignoreBroken** `Boolean` Ignore if image is not loaded.
+* **paths** `Array` Image paths.
 
-'''js
+```javascript
 $.imgpreloader({
 	ignoreBroken: true,
 	paths: [ './img/example1/1.jpg' ]
 }).done(function($imgs){
 	alert('Loaded!');
 });
-'''
+```
 
 ## Deferred
 
@@ -26,8 +26,7 @@ $.imgpreloader({
 * **Rejected** Deferred is rejected when at least one image is broken, and set **ignoreBroken** options false.
 * **Notified** Deferred is notified every time an image has finished loading.
 
-'''js
-
+```javascript
 // Save a deferred object
 var defer = $.imgpreloader({
 	ignoreBroken: true,
@@ -53,7 +52,7 @@ defer.progress(function($img, per){
 	// $img: the jQuery object with one image
 	// per: percentage loaded
 });
-'''
+```
 
 ## Requirements
 
