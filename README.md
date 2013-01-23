@@ -6,21 +6,21 @@ jquery.imgpreloader.js is a simple image preloader plugin. $.imgpreloader return
 
 http://fingaholic.github.com/jquery.imgpreloader/
 
-## Options
+## Usage
 
-* **ignoreBroken** `Boolean` Ignore if image is not loaded.
+### Options
+
+* **ignoreBroken** `Boolean` Ignore if image is broken.
 * **paths** `Array` Image paths.
 
 ```javascript
-$.imgpreloader({
+var defer = $.imgpreloader({
 	ignoreBroken: true,
 	paths: [ './img/example1/1.jpg' ]
-}).done(function($imgs){
-	alert('Loaded!');
 });
 ```
 
-## Deferred
+### Deferred
 
 * **Resolved** Deferred is resolved when all images have been loaded or set **ignoreBroken** options true.
 * **Rejected** Deferred is rejected when at least one image is broken, and set **ignoreBroken** options false.
