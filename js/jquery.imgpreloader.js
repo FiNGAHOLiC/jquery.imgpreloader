@@ -1,7 +1,7 @@
 /*!
  * jquery.imgpreloader.js
  *
- * @modified  2012/01/23
+ * @modified  2012/01/24
  * @requires  jQuery 1.7.x or later
  * @author    FiNGAHOLiC
  * @link      https://github.com/FiNGAHOLiC/jquery.imgpreloader
@@ -13,8 +13,8 @@
 
 	$.imgpreloader = $.imgpreloader || function(options){
 		var o = $.extend({
-			paths: [],
-			ignoreBroken: false
+			ignoreBroken: false,
+			paths: []
 		}, options);
 		return $.Deferred(function(defer){
 			var $proper = [], $broken = [], count = 0, imgpaths = o.paths.length;
