@@ -1,21 +1,21 @@
 {
 	"name": "imgpreloader",
-	"title": "jquery.imgpreloader",
-	"description": "jquery.imgpreloader.js is a simple image preloader plugin.",
-	"version": "1.0.0",
-	"homepage": "https://github.com/FiNGAHOLiC/jquery.imgpreloader",
+	"title": "jquery.imgpreloader", 
 	"author": {
 		"name": "FiNGAHOLiC",
 		"url": "https://github.com/FiNGAHOLiC"
 	},
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "http://opensource.org/licenses/MIT"
-		}
-	],
+	"licenses": [{
+		"type":"MIT",
+		"url": "http://opensource.org/licenses/MIT"
+	}],
+	"description": "this is a simple image preloader plugin.",
 	"dependencies": {
 		"jquery": ">=1.7"
 	},
-	"keywords": [ "loader", "loading", "preload", "imgpreload" ]
+	"keywords": [ "loader", "loading", "preload", "imgpreload" ],
+	"version": "1.0.0",
+	"download":"https://github.com/FiNGAHOLiC/jquery.imgpreloader/archive/master.zip",
+	"homepage": "https://github.com/FiNGAHOLiC/jquery.imgpreloader",
+	"docs": "https://github.com/megazalrock/jquery-loadprogress-plugin"
 }
