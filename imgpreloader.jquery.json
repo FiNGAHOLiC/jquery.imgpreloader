@@ -24,7 +24,7 @@
 	"dependencies": {
 		"jquery": ">=1.7"
 	},
+	"docs": "http://fingaholic.github.com/jquery.imgpreloader/",
 	"download": "https://github.com/FiNGAHOLiC/jquery.imgpreloader/archive/master.zip",
-	"homepage": "https://github.com/FiNGAHOLiC/jquery.imgpreloader",
-	"docs": "http://fingaholic.github.com/jquery.imgpreloader/"
+	"homepage": "https://github.com/FiNGAHOLiC/jquery.imgpreloader"
 }
