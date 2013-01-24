@@ -3,7 +3,7 @@
  *
  * @modified  2012/01/24
  * @requires  jQuery 1.7.x or later
- * @version   1.0.0
+ * @version   1.1.0
  * @author    FiNGAHOLiC
  * @link      https://github.com/FiNGAHOLiC/jquery.imgpreloader
  * @license   The MIT License
