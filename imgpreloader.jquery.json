@@ -2,7 +2,7 @@
 	"name": "imgpreloader",
 	"title": "jquery imgpreloader plugin", 
 	"description": "this is a simple image preloader plugin.",
-	"keywords": [ "loader", "loading", "preload", "preloader", "imgpreload", "imgpreloader" ],
+	"keywords": ["loader","loading","preload","preloader","imgpreload","imgpreloader"],
 	"version": "1.0.0",
 	"author": {
 		"name": "FiNGAHOLiC",
