@@ -1,9 +1,9 @@
 /*!
  * jquery.imgpreloader.js
  *
- * @modified  2012/01/24
+ * @modified  2012/01/25
  * @requires  jQuery 1.7.x or later
- * @version   1.1.0
+ * @version   1.1.1
  * @author    FiNGAHOLiC
  * @link      https://github.com/FiNGAHOLiC/jquery.imgpreloader
  * @license   The MIT License
@@ -13,32 +13,44 @@
 ;(function($, window, document, undefined){
 
 	$.imgpreloader = $.imgpreloader || function(options){
-		var o = $.extend({
-			ignoreBroken: false,
-			paths: []
-		}, options);
+		var o = $.extend({ paths: [] }, options);
 		return $.Deferred(function(defer){
-			var $proper = [], $broken = [], count = 0, imgpaths = o.paths.length;
-			var handler = function($elems, $elem){
-				count++;
-				$elems.push($elem);
-				defer.notify($elem, Math.floor(count / imgpaths * 100));
-				if(count === imgpaths){
-					if($broken.length && !o.ignoreBroken){
-						defer.reject($broken);
+			var loopCount = 0,
+			    pathLength = o.paths.length,
+			    $allImages = $(),
+			    $properImages = $(),
+			    $brokenImages = $(),
+			    handler = function($image, isBroken){
+				loopCount = loopCount + 1;
+				$allImages = $allImages.add($image);
+				defer.notify(
+					$image,
+					$allImages,
+					$properImages,
+					$brokenImages,
+					isBroken,
+					Math.floor(loopCount / pathLength * 100)
+				);
+				if(loopCount === pathLength){
+					if($brokenImages.length){
+						defer.reject($allImages, $properImages, $brokenImages);
 					}else{
-						defer.resolve($proper);
+						defer.resolve($allImages);
 					};
 				};
 			};
-			if(!$.isArray(o.paths) || !imgpaths){
+			if(!$.isArray(o.paths) || !pathLength){
 				defer.reject();
 			}else{
 				$.each(o.paths, function(i, src){
 					$('<img>').on('load', function(){
-						handler($proper, $(this));
+						var $image = $(this);
+						$properImages = $properImages.add($image);
+						handler($image, false);
 					}).on('error', function(){
-						handler($broken, $(this));
+						var $image = $(this);
+						$brokenImages = $brokenImages.add($image);
+						handler($image, true);
 					}).attr('src', src);
 				});
 			};

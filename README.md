@@ -1,6 +1,8 @@
 # jquery.imgpreloader.js
 
-jquery.imgpreloader.js is a simple image preloader plugin. $.imgpreloader returns jQuery deferred object.
+jquery.imgpreloader.js is a simple image preloader plugin.
+
+$.imgpreloader returns jQuery deferred object.
 
 ## Demo
 
@@ -10,26 +12,23 @@ http://fingaholic.github.com/jquery.imgpreloader/
 
 ### Options
 
-* **ignoreBroken** `Boolean` Ignore if image is broken.
 * **paths** `Array` Image paths.
 
 ```javascript
 var defer = $.imgpreloader({
-	ignoreBroken: true,
 	paths: [ './img/example1/1.jpg' ]
 });
 ```
 
 ### Deferred
 
-* **Resolved** Deferred is resolved when all images have been loaded or set **ignoreBroken** options **true**.
-* **Rejected** Deferred is rejected when at least one image is broken, and set **ignoreBroken** options **false**.
+* **Resolved** Deferred is resolved when all images have been loaded.
+* **Rejected** Deferred is rejected when at least one image is broken.
 * **Notified** Deferred is notified every time an image has finished loading.
 
 ```javascript
 // Save a deferred object
 var defer = $.imgpreloader({
-	ignoreBroken: true,
 	paths: [
 		'./img/1.jpg',
 		'./img/2.jpg',
@@ -37,20 +36,33 @@ var defer = $.imgpreloader({
 	]
 });
 
+// Always
+defer.always(function($allImages, $properImages, $brokenImages){
+	// $allImages: jQuery object with all images
+	// $properImages: jQuery object with properly loaded images
+	// $brokenImages: jQuery object with broken images
+});
+
 // Resolved
-defer.done(function($imgs){
-	// $imgs: the jQuery object with all images
+defer.done(function($allImages){
+	// $allImages: jQuery object with all images
 });
 
 // Rejected
-defer.fail(function($imgs){
-	// $imgs: the jQuery object with all images
+defer.fail(function($allImages, $properImages, $brokenImages){
+	// $allImages: jQuery object with all images
+	// $properImages: jQuery object with properly loaded images
+	// $brokenImages: jQuery object with broken images
 });
 
 // Notified
-defer.progress(function($img, per){
-	// $img: the jQuery object with one image
-	// per: percentage loaded
+defer.progress(function($image, $allImages, $properImages, $brokenImages, isBroken, percentage){
+	// $image: jQuery object with an image
+	// $allImages: jQuery object with all images
+	// $properImages: jQuery object with properly loaded images
+	// $brokenImages: jQuery object with broken images
+	// isBroken: broken or not
+	// percentage: percentage of image loading
 });
 ```
 

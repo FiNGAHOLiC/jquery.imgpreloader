@@ -6,12 +6,6 @@
 		<meta name="viewport" content="width=device-width">
 		<meta name="keywords" content="">
 		<meta name="description" content="">
-		<meta property="og:title" content="">
-		<meta property="og:description" content="">
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="">
-		<meta property="og:image" content="">
-		<meta property="og:site_name" content="">
 		<title>jquery.imgpreloader.js</title>
 		<style>
 			img { width: 102px; height: 102px; }
@@ -33,61 +27,45 @@
 	<body>
 		<div class="area-body">
 			<h1>jquery.imgpreloader.js</h1>
-			<p>jquery.imgpreloader.js is a simple image preloader plugin. $.imgpreloader returns jQuery deferred object.</p>
+			<p>jquery.imgpreloader.js is a simple image preloader plugin.</p>
+			<p>$.imgpreloader returns jQuery deferred object.</p>
 			<section>
-				<h1>Example 1 - Load single image</h1>
+				<h1>deferred.done()</h1>
 				<div id="output1"></div>
 				<button id="button1">Start loading</button>
-				<section>
-					<h1>Code</h1>
 <pre>$.imgpreloader({
-	ignoreBroken: true,
 	paths: [ './img/example1/1.jpg' ]
-}).done(function($imgs){
+}).done(function($allImages){
 	alert('Loaded!');
-	$output.append($imgs);
-}).fail(function($imgs){
-	alert('Not loaded!');
+	$output.append($allImages);
 });</pre>
-				</section>
 			</section>
 			<section>
-				<h1>Example 2 - Load single image(If image is broken)</h1>
+				<h1>deferred.fail()</h1>
 				<div id="output2"></div>
 				<button id="button2">Start loading</button>
-				<section>
-					<h1>Code</h1>
 <pre>$.imgpreloader({
-	ignoreBroken: false,
 	paths: [ './img/example2/notexist.jpg' ]
-}).done(function($imgs){
-	alert('Loaded!');
-	$output.append($imgs);
-}).fail(function($imgs){
+}).fail(function($allImages, $properImages, $brokenImages){
 	alert('Not loaded!');
-	$output.text('Something wrong!');
 });</pre>
-				</section>
 			</section>
 			<section>
-				<h1>Example 3 - Load multiple images</h1>
+				<h1>deferred.always()</h1>
 				<div id="output3"></div>
 				<button id="button3">Start loading</button>
-				<section>
-					<h1>Code</h1>
 <pre>$.imgpreloader({
-	ignoreBroken: true,
 	paths: [
-		'./img/example3/1.jpg',
-		'./img/example3/2.jpg',
-		'./img/example3/3.jpg',
-		'./img/example3/4.jpg',
-		'./img/example3/5.jpg',
-		'./img/example3/6.jpg',
-		'./img/example3/7.jpg',
-		'./img/example3/8.jpg',
-		'./img/example3/9.jpg',
-		'./img/example3/10.jpg',
+		'./img/example3/notexist1.jpg',
+		'./img/example3/notexist2.jpg',
+		'./img/example3/notexist3.jpg',
+		'./img/example3/notexist4.jpg',
+		'./img/example3/notexist5.jpg',
+		'./img/example3/notexist6.jpg',
+		'./img/example3/notexist7.jpg',
+		'./img/example3/notexist8.jpg',
+		'./img/example3/notexist9.jpg',
+		'./img/example3/notexist10.jpg',
 		'./img/example3/11.jpg',
 		'./img/example3/12.jpg',
 		'./img/example3/13.jpg',
@@ -99,22 +77,18 @@
 		'./img/example3/19.jpg',
 		'./img/example3/20.jpg'
 	]
-}).done(function($imgs){
-	alert('Loaded!');
-	$output.append($imgs);
-}).fail(function($imgs){
-	alert('Not loaded!');
+}).always(function($allImages, $properImages, $brokenImages){
+	alert('Append only properly loaded images');
+	$output.append($properImages);
 });</pre>
-				</section>
 			</section>
 			<section>
-				<h1>Example 4 - Show progress text</h1>
-				<div id="output4">0</div>
-				<button id="button4">Start loading</button>
+				<h1>deferred.progress()</h1>
 				<section>
-					<h1>Code</h1>
+					<h1>progress text</h1>
+					<div id="output4">0</div>
+					<button id="button4">Start loading</button>
 <pre>$.imgpreloader({
-	ignoreBroken: true,
 	paths: [
 		'./img/example4/1.jpg',
 		'./img/example4/2.jpg',
@@ -137,26 +111,20 @@
 		'./img/example4/19.jpg',
 		'./img/example4/20.jpg'
 	]
-}).done(function($imgs){
+}).done(function($allImages){
 	alert('Loaded!');
-	$output.empty().append($imgs);
-}).fail(function($imgs){
-	alert('Not loaded!');
-}).progress(function($img, per){
-	$output.text(per);
+	$output.empty().append($allImages);
+}).progress(function($image, $allImages, $properImages, $brokenImages, isBroken, percentage){
+	$output.text(percentage);
 });</pre>
 				</section>
-			</section>
-			<section>
-				<h1>Example 5 - Show progress bar using css sprites</h1>
-				<div id="output5">
-					<div id="loader" class="per-0"></div>
-				</div>
-				<button id="button5">Start loading</button>
 				<section>
-					<h1>Code</h1>
+					<h1>progress bar using css sprites</h1>
+					<div id="output5">
+						<div id="loader" class="per-0"></div>
+					</div>
+					<button id="button5">Start loading</button>
 <pre>$.imgpreloader({
-	ignoreBroken: true,
 	paths: [
 		'./img/example5/1.jpg',
 		'./img/example5/2.jpg',
@@ -179,15 +147,13 @@
 		'./img/example5/19.jpg',
 		'./img/example5/20.jpg'
 	]
-}).done(function($imgs){
+}).done(function($allImages){
 	alert('Loaded!');
-	$output.empty().append($imgs);
-}).fail(function($imgs){
-	alert('Not loaded!');
-}).progress(function($img, per){
+	$output.empty().append($allImages);
+}).progress(function($image, $allImages, $properImages, $brokenImages, isBroken, percentage){
 	$loader.removeClass(function(index, css){
 		return (css.match(/per-\S+/g) || []).join(' ');
-	}).addClass('per-' + Math.floor(per / 10) * 10);
+	}).addClass('per-' + Math.floor(percentage / 10) * 10);
 });</pre>
 				</section>
 			</section>
@@ -205,13 +171,10 @@
 					var startloading = function(){
 						$button.attr('disabled', true);
 						$.imgpreloader({
-							ignoreBroken: true,
 							paths: [ './img/example1/1.jpg' ]
-						}).done(function($imgs){
+						}).done(function($allImages){
 							alert('Loaded!');
-							$output.append($imgs);
-						}).fail(function($imgs){
-							alert('Not loaded!');
+							$output.append($allImages);
 						});
 					};
 					$button.on('click', startloading);
@@ -224,14 +187,9 @@
 					var startloading = function(){
 						$button.attr('disabled', true);
 						$.imgpreloader({
-							ignoreBroken: false,
 							paths: [ './img/example2/notexist.jpg' ]
-						}).done(function($imgs){
-							alert('Loaded!');
-							$output.append($imgs);
-						}).fail(function($imgs){
+						}).fail(function($allImages, $properImages, $brokenImages){
 							alert('Not loaded!');
-							$output.text('Something wrong!');
 						});
 					};
 					$button.on('click', startloading);
@@ -244,18 +202,17 @@
 					var startloading = function(){
 						$button.attr('disabled', true);
 						$.imgpreloader({
-							ignoreBroken: true,
 							paths: [
-								'./img/example3/1.jpg',
-								'./img/example3/2.jpg',
-								'./img/example3/3.jpg',
-								'./img/example3/4.jpg',
-								'./img/example3/5.jpg',
-								'./img/example3/6.jpg',
-								'./img/example3/7.jpg',
-								'./img/example3/8.jpg',
-								'./img/example3/9.jpg',
-								'./img/example3/10.jpg',
+								'./img/example3/notexist1.jpg',
+								'./img/example3/notexist2.jpg',
+								'./img/example3/notexist3.jpg',
+								'./img/example3/notexist4.jpg',
+								'./img/example3/notexist5.jpg',
+								'./img/example3/notexist6.jpg',
+								'./img/example3/notexist7.jpg',
+								'./img/example3/notexist8.jpg',
+								'./img/example3/notexist9.jpg',
+								'./img/example3/notexist10.jpg',
 								'./img/example3/11.jpg',
 								'./img/example3/12.jpg',
 								'./img/example3/13.jpg',
@@ -267,11 +224,9 @@
 								'./img/example3/19.jpg',
 								'./img/example3/20.jpg'
 							]
-						}).done(function($imgs){
-							alert('Loaded!');
-							$output.append($imgs);
-						}).fail(function($imgs){
-							alert('Not loaded!');
+						}).always(function($allImages, $properImages, $brokenImages){
+							alert('Append only properly loaded images');
+							$output.append($properImages);
 						});
 					};
 					$button.on('click', startloading);
@@ -284,7 +239,6 @@
 					var startloading = function(){
 						$button.attr('disabled', true);
 						$.imgpreloader({
-							ignoreBroken: true,
 							paths: [
 								'./img/example4/1.jpg',
 								'./img/example4/2.jpg',
@@ -307,13 +261,11 @@
 								'./img/example4/19.jpg',
 								'./img/example4/20.jpg'
 							]
-						}).done(function($imgs){
+						}).done(function($allImages){
 							alert('Loaded!');
-							$output.empty().append($imgs);
-						}).fail(function($imgs){
-							alert('Not loaded!');
-						}).progress(function($img, per){
-							$output.text(per);
+							$output.empty().append($allImages);
+						}).progress(function($image, $allImages, $properImages, $brokenImages, isBroken, percentage){
+							$output.text(percentage);
 						});
 					};
 					$button.on('click', startloading);
@@ -327,7 +279,6 @@
 					var startloading = function(){
 						$button.attr('disabled', true);
 						$.imgpreloader({
-							ignoreBroken: true,
 							paths: [
 								'./img/example5/1.jpg',
 								'./img/example5/2.jpg',
@@ -350,15 +301,13 @@
 								'./img/example5/19.jpg',
 								'./img/example5/20.jpg'
 							]
-						}).done(function($imgs){
+						}).done(function($allImages){
 							alert('Loaded!');
-							$output.empty().append($imgs);
-						}).fail(function($imgs){
-							alert('Not loaded!');
-						}).progress(function($img, per){
+							$output.empty().append($allImages);
+						}).progress(function($image, $allImages, $properImages, $brokenImages, isBroken, percentage){
 							$loader.removeClass(function(index, css){
 								return (css.match(/per-\S+/g) || []).join(' ');
-							}).addClass('per-' + Math.floor(per / 10) * 10);
+							}).addClass('per-' + Math.floor(percentage / 10) * 10);
 						});
 					};
 					$button.on('click', startloading);
