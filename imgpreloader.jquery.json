@@ -2,7 +2,7 @@
 	"name": "imgpreloader",
 	"title": "jquery imgpreloader", 
 	"description": "this is a simple image preloader plugin.",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"keywords": [
 		"loader",
 		"loading",
