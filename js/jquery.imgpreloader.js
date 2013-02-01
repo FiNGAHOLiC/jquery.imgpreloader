@@ -1,9 +1,9 @@
 /*!
  * jquery.imgpreloader.js
  *
- * @modified  2012/01/31
+ * @modified  2013/02/01
  * @requires  jQuery 1.7.x or later
- * @version   1.1.3
+ * @version   1.1.4
  * @author    FiNGAHOLiC
  * @link      https://github.com/FiNGAHOLiC/jquery.imgpreloader
  * @license   The MIT License
